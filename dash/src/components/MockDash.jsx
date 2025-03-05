@@ -4,6 +4,7 @@ import TimerCount from './TimerCount.jsx';
 import BasicGauge from './BasicGauge.jsx';
 import { MOCK_ECU_DATA } from './mockECUData.js';
 import SpeedoMockGauge from './SpeedoMockGauge.jsx';
+import { GAUGE_CONFIG } from './GaugeConfig.js';
 
 
 const MockDash = () => {
@@ -39,7 +40,7 @@ const MockDash = () => {
         height:340,
     }}>
         <RPMMockGauge rpm={ecuData.EngineSpeed}/>
-        <SpeedoMockGauge rpm={ecuData.DrivenWheelSpeed}/>
+        <SpeedoMockGauge speed={ecuData.DrivenWheelSpeed}/>
       </div>
       <div style={{
         display: 'flex',
@@ -47,12 +48,12 @@ const MockDash = () => {
         alignItems: 'center', // Vertically center items
         padding: '10px'
     }}>
-        <BasicGauge value={ecuData.OilPressure} min={0} max={700} warning={500} error={600} label="Oil Pressure"/>
-        <BasicGauge value={ecuData.OilPressure} min={0} max={700} warning={500} error={600} label="Oil Pressure"/>
-        <BasicGauge value={ecuData.OilPressure} min={0} max={700} warning={500} error={600} label="Oil Pressure"/>
-        <BasicGauge value={ecuData.OilPressure} min={0} max={700} warning={500} error={600} label="Oil Pressure"/>
-        <BasicGauge value={ecuData.OilPressure} min={0} max={700} warning={500} error={600} label="Oil Pressure"/>
-        <BasicGauge value={ecuData.OilPressure} min={0} max={700} warning={500} error={600} label="Oil Pressure"/>
+        <BasicGauge value={ecuData.OilPressure} {...GAUGE_CONFIG.OilPressure}/>
+        <BasicGauge value={ecuData.OilTemperature} {...GAUGE_CONFIG.OilTemperature} />
+        <BasicGauge value={ecuData.ECT}  {...GAUGE_CONFIG.ECT} />
+        <BasicGauge value={ecuData.Gear} {...GAUGE_CONFIG.Gear}/>
+        <BasicGauge value={ecuData.IAT} {...GAUGE_CONFIG.IAT}/>
+        <BasicGauge value={ecuData.MAP} {...GAUGE_CONFIG.MAP}/>
       </div>
       <TimerCount />
     </div>

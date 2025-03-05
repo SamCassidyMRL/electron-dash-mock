@@ -12,9 +12,9 @@ const RPMMockGauge = ({rpm}) => {
       maxValue={9000} 
   value={rpm }
   arc={{
-    colorArray: ['#FFFFFF', '#DA2128', '#DA2128'],
-    subArcs: [{limit:7000}, {limit: 8900}, {limit: 9000, color: '#DA2128'}],
-    padding: -20,
+    colorArray: ['#FFFFFF', '#DA2128', '#7a0000'],
+    subArcs: [{limit:6000}, {limit: 8000}, {limit: 9000, color: '#DA2128'}],
+    padding: 0,
     gradient: true,
     cornerRadius: 20,
     width: 0.15
