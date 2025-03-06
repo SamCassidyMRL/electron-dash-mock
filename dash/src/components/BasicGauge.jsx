@@ -1,14 +1,34 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { GaugeComponent } from 'react-gauge-component';
 
 const BasicGauge = ({value, min, max, softWarning, hardWarning, label}) => {
+  const [canRerender, setCanRerender] = useState(true)
+  const [currentValue, setCurrentValue] = useState(value)
+
+  useEffect(() => {
+    const canRerenderCallback = setInterval(() => {
+      setCanRerender(true);
+    }, 100);
+
+    // Cleanup the interval when the component unmounts
+    return () => clearInterval(canRerenderCallback);
+  }, []);
+
   return (
     <div style={{width: 150}}> 
       <GaugeComponent
       style={{marginRight: '-50px', marginLeft: '-50px', marginTop: '-30px' }}
       labels={{ 
         tickLabels: {hideMinMax: true}, 
-        valueLabel: { formatTextValue: value => { return 100} }, 
+        valueLabel: { formatTextValue: value => { 
+          if (canRerender) {
+            setCurrentValue(Math.floor(value))
+            setCanRerender(false)
+            return Math.floor(value)
+          } else {
+            return currentValue
+          }
+        }},
       }}
       minValue={min ?? 0}
       maxValue={max ?? 100}

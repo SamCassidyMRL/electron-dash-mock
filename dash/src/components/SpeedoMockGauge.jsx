@@ -3,6 +3,18 @@ import { GaugeComponent } from 'react-gauge-component';
 
 const SpeedoMockGauge = ({speed}) => {
 
+  const [canRerender, setCanRerender] = useState(true)
+      const [currentValue, setCurrentValue] = useState(speed)
+    
+      useEffect(() => {
+        const canRerenderCallback = setInterval(() => {
+          setCanRerender(true);
+        }, 100);
+    
+        // Cleanup the interval when the component unmounts
+        return () => clearInterval(canRerenderCallback);
+      }, []);
+
   return (
     <div style={{backgroundColor: '#0000000'}}>
       <GaugeComponent
@@ -18,7 +30,15 @@ const SpeedoMockGauge = ({speed}) => {
     width: 0.15
   }}
   labels={{
-    valueLabel: { formatTextValue: value => { return Math.floor(value) } },
+    valueLabel: { formatTextValue: value => { 
+      if (canRerender) {
+        setCurrentValue(Math.floor(value))
+        setCanRerender(false)
+        return Math.floor(value)
+      } else {
+        return currentValue
+      }
+    }},
     tickLabels: {
       colorArray0: ['#FFFFFF'],
       type: "inner",

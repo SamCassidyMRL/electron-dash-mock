@@ -8,7 +8,7 @@ import { GAUGE_CONFIG } from './GaugeConfig.js';
 
 
 const MockDash = () => {
-    const [ecuDataIndex, setEcuDataIndex] = useState(1)
+    const [ecuDataIndex, setEcuDataIndex] = useState(2000)
   
     useEffect(() => {
       // This function will update the number every 20ms (50 times per second)
@@ -25,8 +25,6 @@ const MockDash = () => {
       // Cleanup the interval on component unmount
       return () => clearInterval(interval);
     }, []);
-    // setEcuData(MOCK_ECU_DATA[ecuDataIndex]) 
-
 
     const ecuData = MOCK_ECU_DATA[ecuDataIndex]
 
