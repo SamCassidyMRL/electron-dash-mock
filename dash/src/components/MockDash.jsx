@@ -5,17 +5,18 @@ import BasicGauge from './BasicGauge.jsx';
 import { MOCK_ECU_DATA } from './mockECUData.js';
 import SpeedoMockGauge from './SpeedoMockGauge.jsx';
 import { GAUGE_CONFIG } from './GaugeConfig.js';
+import NumberGauge from './NumberGauge.jsx';
 
 
 const MockDash = () => {
-    const [ecuDataIndex, setEcuDataIndex] = useState(2000)
+    const [ecuDataIndex, setEcuDataIndex] = useState(4500)
   
     useEffect(() => {
       // This function will update the number every 20ms (50 times per second)
-      const interval = setInterval(() => {
+      const interval = setInterval(() => { 
         setEcuDataIndex((prevNumber) => { 
-          if (prevNumber > 9000) {
-            return 0
+          if (prevNumber === MOCK_ECU_DATA.length - 1 ) {
+            return 1
           } else {
             return prevNumber + 1
           }
@@ -29,31 +30,35 @@ const MockDash = () => {
     const ecuData = MOCK_ECU_DATA[ecuDataIndex]
 
   return (
-    <div style={{backgroundColor: '#3F1951', height: '95vh'}}>
+    <div style={{backgroundColor: '#3F1951', width: 1026, height: 600}}>
+      <div style={{height: 40, width: '100%', backgroundColor: '#000000' }} />
       <div style={{
         display: 'flex',
         justifyContent: 'space-between', // Space items evenly across the page
         alignItems: 'center', // Vertically center items
-        padding: '10px',
-        height:340,
+        height:388,
+        overflow: 'hidden',
+        padding: 6
     }}>
-        <RPMMockGauge rpm={ecuData.EngineSpeed}/>
-        <SpeedoMockGauge speed={ecuData.DrivenWheelSpeed}/>
+        <SpeedoMockGauge speed={ecuData.Speed}/>
+        <RPMMockGauge rpm={ecuData.RPM}/>
       </div>
       <div style={{
         display: 'flex',
         justifyContent: 'space-between', // Space items evenly across the page
         alignItems: 'center', // Vertically center items
-        padding: '10px'
+        padding: 6,
+        height: 108
     }}>
         <BasicGauge value={ecuData.OilPressure} {...GAUGE_CONFIG.OilPressure}/>
         <BasicGauge value={ecuData.OilTemperature} {...GAUGE_CONFIG.OilTemperature} />
         <BasicGauge value={ecuData.ECT}  {...GAUGE_CONFIG.ECT} />
-        <BasicGauge value={ecuData.Gear} {...GAUGE_CONFIG.Gear}/>
+        <NumberGauge value={ecuData.Gear} {...GAUGE_CONFIG.Gear}/>
         <BasicGauge value={ecuData.IAT} {...GAUGE_CONFIG.IAT}/>
         <BasicGauge value={ecuData.MAP} {...GAUGE_CONFIG.MAP}/>
       </div>
-      <TimerCount />
+
+      <div style={{height: 40, width: '100%', backgroundColor: '#000000' }} ><TimerCount /></div>
     </div>
   );
 };

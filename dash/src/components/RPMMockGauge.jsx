@@ -19,11 +19,12 @@ const RPMMockGauge = ({rpm}) => {
     }, []);
 
   return (
-    <div style={{backgroundColor: '#0000000'}}>
+    <div style={{ width: 500, height: 400}}>
       <GaugeComponent
-      style={{marginRight: -40, marginTop: -80, marginLeft:-40, width: 500, height: 250}}
+      style={{ position: 'absolute', zIndex: 2, width:500, height: 400, fontFamily: 'fantasy'}}
       type="radial"
       maxValue={9000} 
+      marginInPercent={0.02}
   value={rpm }
   arc={{
     colorArray: ['#FFFFFF', '#DA2128', '#7a0000'],
@@ -59,7 +60,11 @@ const RPMMockGauge = ({rpm}) => {
       ]
     }}}
       />
+      <div  style={{position: 'absolute', zIndex: 1, marginLeft: 21, marginTop: 10, height: 370, width: 456, overflow:'hidden'}} >
+      <div  style={{ backgroundColor: '#000000', borderRadius: 2000, height: 456, width: 457}} />
+      </div>
     </div>
+
   );
 };
 
