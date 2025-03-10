@@ -59,7 +59,7 @@ const BasicGauge = ({value, min, max, softWarning, hardWarning, label}) => {
   value={value}
 
 />
-<div color='white' style={{ fontFamily: 'fantasy', textAlign:'center', color:'white', marginTop: '-20px' }}>{label}</div>
+<div color='white' style={{ fontFamily: 'fantasy', textAlign:'center', color:'white', marginTop: '-24px' }}>{label}</div>
     </div>
   );
 };

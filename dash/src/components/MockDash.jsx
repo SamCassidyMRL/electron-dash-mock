@@ -6,6 +6,7 @@ import { MOCK_ECU_DATA } from './mockECUData.js';
 import SpeedoMockGauge from './SpeedoMockGauge.jsx';
 import { GAUGE_CONFIG } from './GaugeConfig.js';
 import NumberGauge from './NumberGauge.jsx';
+import LineGauge from './LineGauge.jsx';
 
 
 const MockDash = () => {
@@ -55,7 +56,7 @@ const MockDash = () => {
         <BasicGauge value={ecuData.ECT}  {...GAUGE_CONFIG.ECT} />
         <NumberGauge value={ecuData.Gear} {...GAUGE_CONFIG.Gear}/>
         <BasicGauge value={ecuData.IAT} {...GAUGE_CONFIG.IAT}/>
-        <BasicGauge value={ecuData.MAP} {...GAUGE_CONFIG.MAP}/>
+        <LineGauge value={ecuData.MAP} {...GAUGE_CONFIG.MAP}/>
       </div>
 
       <div style={{height: 40, width: '100%', backgroundColor: '#000000' }} ><TimerCount /></div>
