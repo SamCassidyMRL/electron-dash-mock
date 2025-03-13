@@ -87,7 +87,7 @@ const LineGauge = ({value, min, max, softWarning, hardWarning, label}) => {
 
         />
     </VictoryChart>
-<div color='white' style={{ fontFamily: 'fantasy', textAlign:'center', color:'white', marginTop: '-20px' }}>{label}</div>
+<div color='white' style={{ fontFamily: 'system-ui', fontWeight: '900', textAlign:'center', color:'white', marginTop: '-20px' }}>{label}</div>
     </div>
   );
 };

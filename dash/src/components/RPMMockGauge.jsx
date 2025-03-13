@@ -21,7 +21,7 @@ const RPMMockGauge = ({rpm}) => {
   return (
     <div style={{ width: 500, height: 400}}>
       <GaugeComponent
-      style={{ position: 'absolute', zIndex: 2, width:500, height: 400, fontFamily: 'fantasy'}}
+      style={{ position: 'absolute', zIndex: 2, width:500, height: 400, fontFamily: 'system-ui', fontWeight: '900'}}
       type="radial"
       maxValue={9000} 
       marginInPercent={0.02}

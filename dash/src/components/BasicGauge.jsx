@@ -17,7 +17,7 @@ const BasicGauge = ({value, min, max, softWarning, hardWarning, label}) => {
   return (
     <div style={{width: 150}}> 
       <GaugeComponent
-      style={{marginRight: '-50px', marginLeft: '-50px', marginTop: '-30px', fontFamily: 'fantasy'}}
+      style={{marginRight: '-50px', marginLeft: '-50px', marginTop: '-30px', fontFamily: 'system-ui', fontWeight: '900'}}
       labels={{ 
         tickLabels: {hideMinMax: true}, 
         valueLabel: { formatTextValue: value => { 
@@ -59,7 +59,7 @@ const BasicGauge = ({value, min, max, softWarning, hardWarning, label}) => {
   value={value}
 
 />
-<div color='white' style={{ fontFamily: 'fantasy', textAlign:'center', color:'white', marginTop: '-24px' }}>{label}</div>
+<div color='white' style={{ fontFamily: 'system-ui', fontWeight: '900', textAlign:'center', color:'white', marginTop: '-24px' }}>{label}</div>
     </div>
   );
 };
